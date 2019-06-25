@@ -1,3 +1,4 @@
+require 'pry'
 class UsersController < ApplicationController
 
   get '/signup' do
@@ -7,12 +8,17 @@ class UsersController < ApplicationController
 
   post "/users/signup" do
     if params[:username] == "" || params[:password] == ""
-      redirect '/failure'
+      redirect '/signup'
     else
-      User.create(username: params[:username], password: params[:password])
-      redirect '/login'
+      user = User.find_by(username: params[:username])
+      if user
+        redirect '/login'
+      else
+      user = User.create(username: params[:username], password: params[:password], first_name: params[:first_name], last_name: params[:last_name])
+      session[:user_id] = user.id
+      redirect '/wines'
     end
-
+    end
   end
 
   get '/login' do
@@ -21,15 +27,20 @@ class UsersController < ApplicationController
 
 
   post "/users/login" do
+    # binding.pry
     @user = User.find_by(username: params[:username])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect to "/account"
+      redirect to "/wines"
     else
-      redirect to "/failure"
+      redirect to "/login"
     end
   end
 
 
+  get '/logout' do
+      session.clear
+      redirect to '/'
+  end
 
 end
