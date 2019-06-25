@@ -1,0 +1,11 @@
+<h2>Your Cellr</h2>
+<ol>
+  <% @user.wines.each do |wine| %>
+    <li class="wines-title"><%=post.title%> (ID:<%=post.id%>)</li>
+      <ul>
+        <a href="/posts/<%=post.id%>">Edit Post</a>
+        <li class="post-content"><%=post.content%></li>
+      </ul>
+
+  <% end %>
+</ol>
