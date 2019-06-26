@@ -4,12 +4,12 @@
     <h2>Welcome to Cellr.</h2>
 
     <div class="content">
-      <p>This web app will allow you to track your wine collection.  Simply Sign-up and track your Cellr. </p>
+      <p>This web app will allow you to track your wine collection.  Simply Sign-up and load your Cellr.</p>
       <% if logged_in? %>
-        <a href="/wines">View my wine</a>
+        <a href="/wines">View my wine</a> || <a href="/wines/new">Add my wine</a>
       <% else %>
         <a href="/signup"><button type="button" name="button" class="btn btn-secondary">Sign-Up</button></a>
-        <button type="button" name="button" class="btn btn-secondary">Login</button>
+        <a href="/login"><button type="button" name="button" class="btn btn-secondary">Login</button></a>
       <% end %>
     </div>
 

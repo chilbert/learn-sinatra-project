@@ -114,3 +114,17 @@
     line-height: 24px;
   }
 }
+
+/* Styles for Front-End */
+
+div.card.wine-card {
+  margin-bottom: 25px;
+}
+
+div.add-wine {
+  margin: 25px;
+}
+
+.wine-header {
+  margin-top: 25px;
+}

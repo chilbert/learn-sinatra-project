@@ -1,1 +1,19 @@
-These are wines
+<h1>Your Wine Cellr</h1>
+
+<h3>Welcome, <%= current_user.first_name %>! You have <%= @bottle_count.sum %> bottles of wine in your Cellr.</h3>
+
+
+<% if @wines.empty? %>
+  <p>Your wine list is empty.  Please <a href="/wines/add">add a bottle.</a></p>
+<% else %>
+  <% @wines.each do |wine| %>
+    <div class="card wine-card">
+      <div class="card-body">
+        <h2><%= wine.wine_name %> - <%= wine.wine_vintage %></h2>
+        <p><%= wine.wine_variety %></p>
+        <small>Bottle Count - <%= wine.bottle_count %> </small><br><br>
+        <a href="/wines/edit/<%= wine.id %>"><button type="button" name="button" class="btn btn-outline-secondary btn-sm">Update</button></a>
+      </div>
+    </div>
+    <% end %>
+<% end %>
