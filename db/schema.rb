@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 20190625153208) do
   end
 
   create_table "wines", force: :cascade do |t|
-    t.string  "winery"
     t.string  "wine_name"
     t.string  "wine_variety"
     t.integer "wine_vintage"
