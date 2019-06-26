@@ -128,3 +128,7 @@ div.add-wine {
 .wine-header {
   margin-top: 25px;
 }
+
+.delete {
+  margin-top: 10px;
+}

@@ -1,5 +1,5 @@
 <h4 class="wine-header">Update Wine - <%= @wine.wine_name %></h4>
-<small>You must enter all fields to successfully update a wine.</small>
+<small>Click in a field to update wine.</small>
 
 <div class="add-wine">
 <form action="/wines/<%= @wine.id %>" method="POST">
@@ -20,11 +20,10 @@
     <label for="bottle_count">Bottle Count</label>
     <input type="text" value="<%= @wine.bottle_count %>" class="form-control" id="bottle_count" placeholder="Enter Bottle Count" name="bottle_count" required>
   </div>
-  <button type="submit" class="btn btn-primary">Update</button>
+  <button type="submit" class="btn btn-secondary">Update</button>
+</form>
+<form action="/wines/delete/<%= @wine.id %>" method="POST" class="delete">
+  <input type="hidden" name="_method" value="delete">
+  <button type="submit" class="btn btn-danger">Delete</button>
 </form>
 </div>
-
-<!-- <form action="/posts/" method="POST">
-  <input type="hidden" name="_method" value="delete">
-  <input type="submit" id="delete" value="Delete Post">
-</form> -->

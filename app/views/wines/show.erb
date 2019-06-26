@@ -4,7 +4,7 @@
 
 
 <% if @wines.empty? %>
-  <p>Your wine list is empty.  Please <a href="/wines/add">add a bottle.</a></p>
+  <p>Your wine list is empty.  Please <a href="/wines/new">add a bottle.</a></p>
 <% else %>
   <% @wines.each do |wine| %>
     <div class="card wine-card">

@@ -49,7 +49,7 @@ class WineController < ApplicationController
     end
   end
 
-  patch '/wines/:id' do 
+  patch '/wines/:id' do
       if logged_in?
           @wine = Wine.find_by_id(params[:id])
           @wine.update(wine_name: params[:wine_name], wine_variety: params[:wine_variety], wine_vintage: params[:wine_vintage], bottle_count: params[:bottle_count])
@@ -59,6 +59,18 @@ class WineController < ApplicationController
         redirect to '/users/login'
       end
     end
+
+  delete '/wines/delete/:id' do
+    if logged_in?
+      @wine = Wine.find_by_id(params[:id])
+      @wine.destroy
+      flash[:success] = "Your wine was removed from your Cellr."
+      redirect to '/wines'
+    else
+      flash[:warning] = "You must be logged in to remove wines."
+      redirect to '/login'
+    end
+  end
 
 
 
