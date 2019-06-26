@@ -12,7 +12,8 @@ class UsersController < ApplicationController
     else
       user = User.find_by(username: params[:username])
       if user
-        redirect '/login'
+        flash[:warning] = "The username you have selected is already in use, please try another or login."
+        redirect '/signup'
       else
       user = User.create(username: params[:username], password: params[:password], first_name: params[:first_name], last_name: params[:last_name])
       session[:user_id] = user.id
@@ -31,8 +32,10 @@ class UsersController < ApplicationController
     @user = User.find_by(username: params[:username])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
+      flash[:success] = "You have successfully logged in."
       redirect to "/wines"
     else
+      flash[:warning] = "Your username or password is incorrect"
       redirect to "/login"
     end
   end
@@ -40,6 +43,7 @@ class UsersController < ApplicationController
 
   get '/logout' do
       session.clear
+      flash[:success] = "You have successfully logged out."
       redirect to '/'
   end
 

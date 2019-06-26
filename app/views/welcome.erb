@@ -5,9 +5,12 @@
 
     <div class="content">
       <p>This web app will allow you to track your wine collection.  Simply Sign-up and track your Cellr. </p>
-      <a href="/signup"><button type="button" name="button" class="btn btn-secondary">Sign-Up</button></a>
-      <button type="button" name="button" class="btn btn-secondary">Login</button>
-
+      <% if logged_in? %>
+        <a href="/wines">View my wine</a>
+      <% else %>
+        <a href="/signup"><button type="button" name="button" class="btn btn-secondary">Sign-Up</button></a>
+        <button type="button" name="button" class="btn btn-secondary">Login</button>
+      <% end %>
     </div>
 
   </div>
